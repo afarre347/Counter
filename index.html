@@ -1,23 +1,31 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <title>Contador</title>
   <style>
+    body {
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
+    }
+
     #contador {
       width: 300px;
       height: 100px;
-      border: 2px solid #333;
+      border: 2px solid #0056b3; /* Borde azul oscuro */
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       font-family: Arial, sans-serif;
-      background-color: #007BFF; /* Azul */
+      background-color: #007BFF; /* Azul de fondo */
       color: white;
       border-radius: 8px;
       text-align: center;
       padding: 10px;
       box-sizing: border-box;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra del borde */
     }
 
     #numero {
@@ -34,41 +42,26 @@
 </head>
 <body>
   <div id="contador">
-    <div id="texto">Ocupación Cantina</div>
+    <div id="texto">Ocupación actual Cantina</div>
     <div id="numero">9</div>
   </div>
 
   <script>
- 
     function actualizarContador() {
- 
       fetch("https://afororeal.eurest.es/API/CAMCTRL/COUNTER?CAMID=NTT-DATA")
- 
         .then((respuesta) => respuesta.json())
- 
         .then((datos) => {
- 
           document.getElementById("numero").textContent = datos.counter;
- 
         })
- 
         .catch((error) => {
- 
           document.getElementById("numero").textContent = "Error";
- 
           console.error("Error al obtener el contador:", error);
- 
         });
- 
     }
- 
- 
- 
+
     actualizarContador();
- 
     setInterval(actualizarContador, 60000);
- 
   </script>
 
-
-</body></html>
+</body>
+</html>
