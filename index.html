@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
   <title>Contador</title>
-  <style>
-    body {
+  
+<style>
+body {
       background-color: #007BFF; /* El mismo azul que el recuadro */
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
+        }
     #contador {
       width: 300px;
       height: 100px;
@@ -25,7 +22,6 @@
       text-align: center;
       padding: 10px;
       box-sizing: border-box;
-      margin: 50px auto; /* Centrar el contador en la página */
     }
 
     #numero {
@@ -47,20 +43,36 @@
   </div>
 
   <script>
+ 
     function actualizarContador() {
+ 
       fetch("https://afororeal.eurest.es/API/CAMCTRL/COUNTER?CAMID=NTT-DATA")
+ 
         .then((respuesta) => respuesta.json())
+ 
         .then((datos) => {
+ 
           document.getElementById("numero").textContent = datos.counter;
+ 
         })
+ 
         .catch((error) => {
+ 
           document.getElementById("numero").textContent = "Error";
+ 
           console.error("Error al obtener el contador:", error);
+ 
         });
+ 
     }
-
+ 
+ 
+ 
     actualizarContador();
+ 
     setInterval(actualizarContador, 60000);
+ 
   </script>
-</body>
-</html>
+
+
+</body></html>
